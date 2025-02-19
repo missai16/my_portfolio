@@ -1,12 +1,24 @@
-
+/* Reset styles */
 body, ul {
   margin: 0;
   padding: 0;
 }
 
+/* Video Background */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Navigation Bar */
 nav {
   text-align: right;
-  background-color: #333;
+  background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent */
   padding: 10px;
   position: fixed;
   width: 100%;
@@ -33,68 +45,47 @@ nav ul li a:hover {
   color: #ffcc00;
 }
 
+/* Body & Main Content */
 body {
   font-family: Arial, sans-serif;
   padding-top: 60px;
-  background-color: pink;
-  color: #333;
-  line-height: 1.6;
-}
-
-main {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  color: #fff;
   text-align: center;
 }
 
-section {
-  margin-bottom: 40px;
-}
-
+/* Content Box */
 .content {
-  background-color: #fff;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+  max-width: 800px;
+  margin: 40px auto;
 }
 
-.content {
-  background-color: rgba(255, 255, 255, 0.8); /* Light background for readability */
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-background-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
+/* Image Styling */
 section img {
   max-width: 50%;
   border-radius: 5px;
 }
 
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(51, 51, 51, 0.8);
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+/* Responsive */
 @media screen and (max-width: 768px) {
   nav ul li {
     display: block;
     margin-bottom: 10px;
   }
-
-}
-
-footer {
-  text-align: center;
-  padding: 15px;
-  background-color: #333;
-  color: #fff;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
 }
 
