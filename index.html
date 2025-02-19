@@ -1,1 +1,55 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#" onclick="toggleSection('all')">Home</a></li>
+      <li><a href="#" onclick="toggleSection('about')">About</a></li>
+      <li><a href="#" onclick="toggleSection('contact')">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="home" class="content">
+      <h1>Hello!</h1>
+      <p>I am Aileen Mae Cat-awan.</p>
+    </section>
+
+    <section id="about" class="content">
+      <h2>About Me</h2>
+      <p>My name is Aileen and I am a BSIT Student from the University of Science and Technology of Southern Philippines. Hoping to see myself as a knowledgeable and self-assured BSIT graduate. </p>
+      <img src="ms.aileen.jpg" alt="About Me">
+    </section>
+
+    <section id="contact" class="content">
+      <h2>Contact Me</h2>
+      <p>You can contact me at:</p>
+      <p>Email: catawan.aileen123@gmail.com</p>
+      <p>Phone: 09534386541</p>
+      <img src="ms.aileen.jpg" alt="Contact Me">
+    </section>
+  </main>
+
+  <script>
+    function toggleSection(sectionId) {
+      const sections = document.querySelectorAll('section.content');
+      sections.forEach(section => {
+        if (sectionId === 'all' || section.id === sectionId) {
+          section.style.display = 'block';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
