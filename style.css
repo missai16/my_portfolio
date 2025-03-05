@@ -82,9 +82,19 @@ footer {
 }
 
 /* Courses Section */
-#courses h2 {
-  color: #222;
+#courses {
+  text-align: center;
 }
+
+.course-item {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  margin: 10px auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
 
 #course-list {
   text-align: left;
