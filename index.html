@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <!-- Video Background -->
   <video autoplay loop muted playsinline id="background-video">
     <source src="video.mp4" type="video/mp4">
@@ -16,8 +17,8 @@
     <ul>
       <li><a href="#" onclick="toggleSection('home')">Home</a></li>
       <li><a href="#" onclick="toggleSection('about')">About</a></li>
-      <li><a href="#" onclick="toggleSection('courses')">Courses</a></li>
       <li><a href="#" onclick="toggleSection('contact')">Contact</a></li>
+      <li><a href="#" onclick="toggleSection('courses')">Courses</a></li>
     </ul>
   </nav>
 
@@ -27,23 +28,25 @@
       <p>I am Aileen Mae Cat-awan.</p>
     </section>
 
-    <section id="about" class="content" style="display: none;">
+    <section id="about" class="content">
       <h2>About Me</h2>
       <p>My name is Aileen and I am a BSIT Student from the University of Science and Technology of Southern Philippines. Hoping to see myself as a knowledgeable and self-assured BSIT graduate.</p>
       <img src="ms.aileen.jpg" alt="About Me">
     </section>
 
-    <section id="courses" class="content" style="display: none;">
-      <h2>My Courses</h2>
-      <div id="course-list"></div>
-    </section>
-
-    <section id="contact" class="content" style="display: none;">
+    <section id="contact" class="content">
       <h2>Contact Me</h2>
-      <p>You can contact me at:</p>
       <p>Email: catawan.aileen123@gmail.com</p>
       <p>Phone: 09534386541</p>
       <img src="ms.aileen.jpg" alt="Contact Me">
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="content">
+      <h2>My Courses</h2>
+      <div id="courses-list">
+        <!-- Courses will be loaded here dynamically -->
+      </div>
     </section>
   </main>
 
@@ -56,37 +59,42 @@
     function toggleSection(sectionId) {
       const sections = document.querySelectorAll('section.content');
       sections.forEach(section => {
-        section.style.display = (section.id === sectionId) ? 'block' : 'none';
+        section.style.display = section.id === sectionId ? 'block' : 'none';
       });
     }
 
+    // Fetch and display courses from courses.json
     async function loadCourses() {
-      const response = await fetch('courses.json');
-      const courses = await response.json();
-      const courseList = document.getElementById('course-list');
-      let content = '';
-      
-      const groupedCourses = {};
-      courses.forEach(course => {
-        const key = `${course.year_level} Year, ${course.sem} Semester`;
-        if (!groupedCourses[key]) groupedCourses[key] = [];
-        groupedCourses[key].push(course);
-      });
-      
-      for (const [title, list] of Object.entries(groupedCourses)) {
-        content += `<h3>${title}</h3><ul>`;
-        list.forEach(course => {
-          content += `<li>${course.code}: ${course.description} (${course.credit} credits)</li>`;
+      try {
+        const response = await fetch("courses.json");
+        if (!response.ok) {
+          throw new Error("Failed to load courses.json");
+        }
+        const courses = await response.json();
+        const coursesList = document.getElementById("courses-list");
+
+        coursesList.innerHTML = ""; // Clear existing content
+
+        courses.forEach(course => {
+          const courseItem = document.createElement("div");
+          courseItem.classList.add("course-item");
+          courseItem.innerHTML = `
+            <h3>${course.code} - ${course.description}</h3>
+            <p><strong>Year Level:</strong> ${course.year_level}</p>
+            <p><strong>Semester:</strong> ${course.sem}</p>
+            <p><strong>Credits:</strong> ${course.credit}</p>
+          `;
+          coursesList.appendChild(courseItem);
         });
-        content += '</ul>';
+      } catch (error) {
+        console.error("Error loading courses:", error);
+        document.getElementById("courses-list").innerHTML = "<p>Failed to load courses.</p>";
       }
-      
-      courseList.innerHTML = content;
     }
-    
-    document.addEventListener('DOMContentLoaded', loadCourses);
+
+    // Load courses when the page is loaded
+    document.addEventListener("DOMContentLoaded", loadCourses);
   </script>
+
 </body>
 </html>
-
-
