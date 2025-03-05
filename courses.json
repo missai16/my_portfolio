@@ -1,5 +1,5 @@
 {
-  "courses": [
+  "courses": 
 "year_level": "1st",
 "sem": "1st",
 "code": "IT112",
@@ -15,7 +15,7 @@
 }
     {
 "year_level": "1st",
-"sem": "1st,
+"sem": "1st",
 "code": "IT111",
 "description": "Introduction to Computing",
 "credit": "3.0"
