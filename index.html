@@ -66,7 +66,8 @@
     // Fetch and display courses from courses.json
     async function loadCourses() {
       try {
-        const response = await fetch("courses.json");
+        const response = await fetch("");fetch("https://missai16.github.io/my_portfolio/courses.json")
+
         if (!response.ok) {
           throw new Error("Failed to load courses.json");
         }
