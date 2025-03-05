@@ -121,3 +121,13 @@ footer {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+#search-bar {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+
