@@ -81,11 +81,33 @@ footer {
   bottom: 0;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-  nav ul li {
-    display: block;
-    margin-bottom: 10px;
-  }
+/* Courses Section */
+#courses h2 {
+  color: #222;
+}
+
+#course-list {
+  text-align: left;
+  margin-top: 20px;
+}
+
+#course-list h3 {
+  color: #333;
+  border-bottom: 2px solid #ffcc00;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+#course-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#course-list li {
+  background: rgba(255, 255, 255, 0.9);
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
