@@ -213,3 +213,21 @@ body.dark-mode .task {
   border-radius: 3px;
   border: 1px solid #ccc;
 }
+
+.education {
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.education ul {
+  list-style: none;
+  padding: 0;
+}
+
+.education li {
+  padding: 5px 0;
+  font-size: 1.1rem;
+}
