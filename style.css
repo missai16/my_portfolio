@@ -4,22 +4,13 @@ body, ul {
   padding: 0;
 }
 
-/* Video Background */
-#background-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
 /* Navigation Bar */
 nav {
-  text-align: right;
-  background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent */
-  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(51, 51, 51, 0.9);
+  padding: 10px 20px;
   position: fixed;
   width: 100%;
   top: 0;
@@ -28,10 +19,10 @@ nav {
 
 nav ul {
   list-style: none;
+  display: flex;
 }
 
 nav ul li {
-  display: inline;
   margin-right: 20px;
 }
 
@@ -45,23 +36,49 @@ nav ul li a:hover {
   color: #ffcc00;
 }
 
+/* Dark Mode Button */
+#darkModeToggle {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #ffcc00;
+  color: #333;
+  font-weight: bold;
+}
+
 /* Body & Main Content */
 body {
   font-family: Arial, sans-serif;
-  padding-top: 60px;
+  padding-top: 70px;
   color: #fff;
   text-align: center;
+  background-color: #0074D9; /* Blue */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #001f3f; /* Dark Blue */
+  color: #ddd;
 }
 
 /* Content Box */
 .content {
-  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  background: rgba(255, 255, 255, 0.9);
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: #333;
   max-width: 800px;
   margin: 40px auto;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Content */
+body.dark-mode .content {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
 }
 
 /* Image Styling */
@@ -74,7 +91,7 @@ section img {
 footer {
   text-align: center;
   padding: 15px;
-  background-color: rgba(51, 51, 51, 0.8);
+  background-color: rgba(51, 51, 51, 0.9);
   color: #fff;
   position: fixed;
   width: 100%;
@@ -82,10 +99,6 @@ footer {
 }
 
 /* Courses Section */
-#courses {
-  text-align: center;
-}
-
 .course-item {
   background: rgba(255, 255, 255, 0.9);
   padding: 15px;
@@ -95,32 +108,13 @@ footer {
   max-width: 600px;
 }
 
-
-#course-list {
-  text-align: left;
-  margin-top: 20px;
+/* Dark Mode Courses */
+body.dark-mode .course-item {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
 }
 
-#course-list h3 {
-  color: #333;
-  border-bottom: 2px solid #ffcc00;
-  padding-bottom: 5px;
-  margin-top: 20px;
-}
-
-#course-list ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-#course-list li {
-  background: rgba(255, 255, 255, 0.9);
-  margin: 5px 0;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
+/* Search Bar */
 #search-bar {
   width: 100%;
   padding: 10px;
@@ -128,4 +122,14 @@ footer {
   border: 2px solid #ddd;
   border-radius: 5px;
   font-size: 16px;
-} 
+}
+
+section img {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
