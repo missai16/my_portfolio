@@ -133,3 +133,68 @@ section img {
   margin: 20px auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* To-Do List Styling */
+#todo {
+  margin-top: 20px;
+}
+
+#todo input[type="text"] {
+  width: 60%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+}
+
+#todo button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #0074D9;
+  color: white;
+  font-weight: bold;
+}
+
+#todo button:hover {
+  background: #005bb5;
+}
+
+#filters button {
+  background: #333;
+}
+
+#filters button:hover {
+  background: #555;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  color: black;
+}
+
+body.dark-mode .task {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.task.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task input[type="text"] {
+  flex: 1;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
