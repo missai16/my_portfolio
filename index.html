@@ -17,6 +17,7 @@
       <li><a href="#" onclick="toggleSection('todo')">To-Do</a></li>
     </ul>
     <button id="darkModeToggle">🌙 Dark Mode</button>
+    <ul id="task-list"></ul>
   </nav>
 
   <main>
@@ -111,67 +112,75 @@
   }
 
   // To-Do List Functionality
-  let tasks = [];
-  let filter = 'all';
+<script>
+let tasks = [];
+let filter = 'all';
 
-  function addTask() {
-    const input = document.getElementById('new-task');
-    const taskText = input.value.trim();
-    if (taskText !== '') {
-      tasks.push({ text: taskText, completed: false });
-      input.value = '';
-      displayTasks();
-    }
-  }
-
-  function toggleComplete(index) {
-    tasks[index].completed = !tasks[index].completed;
+// Function to add a new task
+function addTask() {
+  const input = document.getElementById('new-task');
+  const taskText = input.value.trim();
+  if (taskText !== '') {
+    tasks.push({ text: taskText, completed: false });
+    input.value = '';
     displayTasks();
   }
+}
 
-  function editTask(index) {
-    const newText = prompt('Edit your task:', tasks[index].text);
-    if (newText !== null && newText.trim() !== '') {
-      tasks[index].text = newText.trim();
-      displayTasks();
-    }
-  }
+// Function to toggle completed status using checkbox
+function toggleComplete(index) {
+  tasks[index].completed = !tasks[index].completed;
+  displayTasks();
+}
 
-  function deleteTask(index) {
-    tasks.splice(index, 1);
+// Function to edit task
+function editTask(index) {
+  const newText = prompt('Edit your task:', tasks[index].text);
+  if (newText !== null && newText.trim() !== '') {
+    tasks[index].text = newText.trim();
     displayTasks();
   }
+}
 
-  function setFilter(newFilter) {
-    filter = newFilter;
-    displayTasks();
-  }
+// Function to delete task
+function deleteTask(index) {
+  tasks.splice(index, 1);
+  displayTasks();
+}
 
-  function displayTasks() {
-    const taskList = document.getElementById('task-list');
-    taskList.innerHTML = '';
+// Function to filter tasks (all, completed, pending)
+function setFilter(newFilter) {
+  filter = newFilter;
+  displayTasks();
+}
 
-    const filteredTasks = tasks.filter(task => {
-      if (filter === 'completed') return task.completed;
-      if (filter === 'pending') return !task.completed;
-      return true;
-    });
+// Function to display tasks dynamically with checkboxes
+function displayTasks() {
+  const taskList = document.getElementById('task-list');
+  taskList.innerHTML = '';
 
-    filteredTasks.forEach((task, index) => {
-      const li = document.createElement('li');
-      li.className = 'task' + (task.completed ? ' completed' : '');
-      li.innerHTML = `
-        <span>${task.text}</span>
-        <div>
-          <button onclick="toggleComplete(${index})">${task.completed ? 'Undo' : 'Done'}</button>
-          <button onclick="editTask(${index})">Edit</button>
-          <button onclick="deleteTask(${index})">Delete</button>
-        </div>
-      `;
-      taskList.appendChild(li);
-    });
-  }
+  const filteredTasks = tasks.filter(task => {
+    if (filter === 'completed') return task.completed;
+    if (filter === 'pending') return !task.completed;
+    return true; // Show all tasks
+  });
 
+  filteredTasks.forEach((task, index) => {
+    const li = document.createElement('li');
+    li.className = 'task' + (task.completed ? ' completed' : '');
+
+    li.innerHTML = `
+      <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleComplete(${index})">
+      <span>${task.text}</span>
+      <div>
+        <button onclick="editTask(${index})">Edit</button>
+        <button onclick="deleteTask(${index})">Delete</button>
+      </div>
+    `;
+    taskList.appendChild(li);
+  });
+}
+  
   // Dark Mode
   document.addEventListener("DOMContentLoaded", () => {
     loadCourses();
