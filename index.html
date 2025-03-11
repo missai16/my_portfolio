@@ -86,23 +86,56 @@ async function loadCourses() {
     }
 }
 
-// Function to display courses
+// Function to display courses with Edit button
 function displayCourses(courses) {
     const coursesList = document.getElementById("courses-list");
     coursesList.innerHTML = "";
 
-    courses.forEach(course => {
+    courses.forEach((course, index) => {
         const courseItem = document.createElement("div");
         courseItem.classList.add("course-item");
+        courseItem.setAttribute("data-index", index);
+
         courseItem.innerHTML = `
-            <h3>${course.code} - ${course.description}</h3>
-            <p><strong>Year Level:</strong> ${course.year_level}</p>
-            <p><strong>Semester:</strong> ${course.sem}</p>
-            <p><strong>Credits:</strong> ${course.credit}</p>
+            <h3 contenteditable="false">${course.code} - ${course.description}</h3>
+            <p><strong>Year Level:</strong> <span contenteditable="false">${course.year_level}</span></p>
+            <p><strong>Semester:</strong> <span contenteditable="false">${course.sem}</span></p>
+            <p><strong>Credits:</strong> <span contenteditable="false">${course.credit}</span></p>
+            <button onclick="editCourse(this)">Edit</button>
         `;
+
         coursesList.appendChild(courseItem);
     });
 }
+
+// Function to toggle between Edit and Save
+function editCourse(button) {
+    const courseItem = button.parentElement;
+    const isEditing = button.textContent === "Save";
+
+    const editableElements = courseItem.querySelectorAll('[contenteditable]');
+
+    if (isEditing) {
+        // Save changes
+        editableElements.forEach(el => el.setAttribute("contenteditable", "false"));
+        button.textContent = "Edit";
+
+        // Optionally update the global courses data if needed
+        const index = courseItem.getAttribute("data-index");
+        window.allCourses[index].code = courseItem.querySelector("h3").innerText.split(" - ")[0].trim();
+        window.allCourses[index].description = courseItem.querySelector("h3").innerText.split(" - ")[1].trim();
+        window.allCourses[index].year_level = courseItem.querySelectorAll("span")[0].innerText.trim();
+        window.allCourses[index].sem = courseItem.querySelectorAll("span")[1].innerText.trim();
+        window.allCourses[index].credit = courseItem.querySelectorAll("span")[2].innerText.trim();
+
+        console.log("Updated Course:", window.allCourses[index]); // Optional: For debugging
+    } else {
+        // Enable editing
+        editableElements.forEach(el => el.setAttribute("contenteditable", "true"));
+        button.textContent = "Save";
+    }
+}
+
 
 function searchCourses() {
     const query = document.getElementById("search-bar").value.toLowerCase();
