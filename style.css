@@ -134,6 +134,21 @@ section img {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.home-layout {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.home-image {
+  width: 150px; /* Adjust size as needed */
+  border-radius: 50%;
+}
+
+.home-text {
+  font-size: 1.5rem;
+}
+
 /* To-Do List Styling */
 #todo {
   margin-top: 20px;
