@@ -38,6 +38,16 @@
       <p>Phone: 09534386541</p>
       <img src="ms.aileen.jpg" alt="Contact Me">
     </section>
+    
+    <section id="todo" class="content">
+  <h2>My To-Do List</h2>
+  <ul id="todo-list">
+    <li><input type="checkbox" onchange="markCompleted(this)"> Learn HTML & CSS</li>
+    <li><input type="checkbox" onchange="markCompleted(this)"> Practice JavaScript</li>
+    <li><input type="checkbox" onchange="markCompleted(this)"> Build a Portfolio Website</li>
+    
+  </ul>
+</section>
 
     <section id="courses" class="content">
       <h2>My Courses</h2>
@@ -159,6 +169,14 @@ function displayTasks() {
   filteredTasks.forEach((task, index) => {
     const li = document.createElement('li');
     li.className = 'task' + (task.completed ? ' completed' : '');
+
+    function markCompleted(checkbox) {
+  if (checkbox.checked) {
+    checkbox.parentElement.classList.add('completed');
+  } else {
+    checkbox.parentElement.classList.remove('completed');
+  }
+}
 
     li.innerHTML = `
       <span>${task.text}</span>
