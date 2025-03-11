@@ -130,4 +130,20 @@ footer {
   font-size: 16px;
 }
 
+.course-item button {
+  padding: 8px 12px;
+  margin-top: 10px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.course-item button:hover {
+  background-color: #ffaa00;
+  color: white;
+}
+
+
 
