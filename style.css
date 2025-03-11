@@ -31,6 +31,15 @@ nav ul li a:hover { color: #ffcc00; }
 body { padding-top: 70px; background: #0074D9; color: #fff; font-family: Arial, sans-serif; }
 body.dark-mode { background: #001f3f; color: #ddd; }
 
+/* Image size fix */
+.content img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 20px auto;
+}
+
 /* Sections */
 .content { background: white; color: black; padding: 30px; border-radius: 8px; margin: 40px auto; max-width: 800px; }
 body.dark-mode .content { background: rgba(0,0,0,0.5); color: white; }
